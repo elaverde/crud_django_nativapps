@@ -19,3 +19,8 @@ Para ejecutar esta aplicación, es necesario tener instalados los siguientes req
    `
 
    Con estos requerimientos instalados, la aplicación de Alumnos y Cursos estará lista para ser ejecutada.
+
+## Inicialización del servidor
+   `
+   python manage.py runserver
+   `

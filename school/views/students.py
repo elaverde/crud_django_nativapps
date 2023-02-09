@@ -8,6 +8,8 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from ..forms import StudentForm, RegistrationForm
 from ..models import Student, Registration, Curse
+
+@login_required
 def student_create(request):
     if request.method == 'GET':
         return render(request, 'students/create.html', {"form": StudentForm})
@@ -31,6 +33,7 @@ def student_list(request):
     students = Student.objects.all()
     return render(request, 'students/list.html', {"students": students})
 
+@login_required
 def student_detail(request, id):
     if request.method == 'GET':
         student = get_object_or_404(Student, pk=id)
@@ -56,11 +59,14 @@ def student_detail(request, id):
             return redirect('student_list')
         else:
             print(form.errors)
+
+@login_required
 def student_delete(request, id):
     student = get_object_or_404(Student, pk=id)
     student.delete()
     return redirect('student_list')
 
+@login_required
 def student_top_3(request):
     from datetime import datetime, timedelta
     today = datetime.now().date()

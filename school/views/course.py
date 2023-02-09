@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from ..forms import CurseForm
 from ..models import Curse
 
+@login_required
 def create_course(request):
     if request.method == 'GET':
         return render(request, 'curses/create.html', {"form": CurseForm})
@@ -22,11 +23,13 @@ def create_course(request):
             return redirect('course_list')
         else:
             print(form.errors)
-            
+
+@login_required     
 def course_list(request):
     courses = Curse.objects.all()
     return render(request, 'curses/list.html', {"courses": courses})
 
+@login_required
 def course_detail(request, id):
     if request.method == 'GET':
         course = get_object_or_404(Curse, pk=id)
@@ -44,6 +47,8 @@ def course_detail(request, id):
             return redirect('course_list')
         else:
             print(form.errors)
+
+@login_required
 def course_delete(request, id):
     course = get_object_or_404(Curse, pk=id)
     course.delete()
