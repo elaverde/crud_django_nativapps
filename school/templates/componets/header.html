@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg ">
+  <div class="container">
+    <a class="navbar-brand" href="/">NativApps</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{% url 'course_create' %}" class="nav-link">[+] Crear Curso</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'course_list' %}" class="nav-link">[-] Listar Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'student_create' %}" class="nav-link">[+] Crear Alumno</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'student_list' %}" class="nav-link">[-] Listar Alumnos</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'student_top_3' %}" class="nav-link">[-] Top 3</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="nav-link">Cerrar Sesión</a>
+        </li>
+        {% endif %}
+        {% if not user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{% url 'signup' %}" class="nav-link">Registrarse</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'signin' %}" class="nav-link">Iniciar Sesión</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+<style>
+  .navbar {
+    background-color: #ef891b;
+    color: black;
+  }
+
+  .navbar .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+  }
+  .nav-item a{
+    color: #fff;
+  }
+  .btn-primary {
+    background-color: #ef891b;
+    float: right;
+    border: 1px solid #ef891b;
+  }
+  .btn-primary:hover {
+    background-color: #ca6800;
+    border: 1px solid #ef891b;
+  }
+  .badge {
+    padding: 7px;
+  }
+
+</style>

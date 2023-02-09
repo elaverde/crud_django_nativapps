@@ -1,0 +1,18 @@
+{% extends "../layouts/base.html" %}
+{% block title %} Crear Alumno {% endblock %}
+{% block content %}
+<p>
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    {% endif %}
+</p>
+<div class="card p-3">
+    <form method="POST"  class="form-group">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+{% endblock %}

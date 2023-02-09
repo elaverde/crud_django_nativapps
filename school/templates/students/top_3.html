@@ -1,0 +1,13 @@
+{% extends "../layouts/base.html" %}
+{% block title %} Estudiantes {% endblock %}
+{% block content %}
+<ul class="list-group">
+    {% for course in courses %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>Curso: {{ course.name }} - Número de alumnos: {{course.num_students}}</div>
+      
+      
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

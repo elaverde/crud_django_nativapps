@@ -1,0 +1,16 @@
+{% extends "../layouts/base.html" %}
+{% block content %}
+<h1>Te damos la bienvenida NativApps</h1>
+<p>
+  {% if form.errors %}
+  <div class="alert alert-danger" role="alert">
+    {{error}}
+  </div>
+  {% endif %}
+</p>
+<form action="/signin/" method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+</form>
+{% endblock %}
