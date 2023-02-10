@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from school.views import *
+from django.conf import settings
+from django.contrib.staticfiles.urls import static
 
 #importamos lo del folder views
 urlpatterns = [
@@ -36,3 +38,6 @@ urlpatterns = [
     path('dashboard/', dashboard, name='dashboard')
 ]
 
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
